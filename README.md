@@ -33,6 +33,7 @@ y is greater than x and z.
 #Consonant - rest other alphabets
 alphabet=input("Enter a alphabet:") 
 vowel=['a','e','i','o','u']
+
 Exception=['h', 'y']
 if alphabet in vowel:
   print('Alphabet is a Vowel.')
@@ -411,3 +412,175 @@ print ("Mean of Row",mean_of_row)
   
 O/P - Mean Of Column [45. 47. 49. 51. 53.]
 Mean of Row [ 4. 14. 24. 34. 44. 54. 64. 74. 84. 94.]
+
+********************************************************** Data Visualization Assingment1 *****************************************************************************
+**Solution_On_Data_Visualization_Assingment1**
+
+#1.Using pandas, create a dummy dataset (of at least 6 columns and 5 rows)
+import pandas as pd
+import numpy  as np
+dummy_data = pd.DataFrame(np.arange(0,30).reshape(5,6),index=['Student1','Student2','Student3','Student4','Student5',],columns=['Maths','English','Hindi','Physics','Computer','Science'])
+print(dummy_data)
+o/p-
+            Maths  English  Hindi  Physics  Computer  Science
+Student1      0        1      2        3         4        5
+Student2      6        7      8        9        10       11
+Student3     12       13     14       15        16       17
+Student4     18       19     20       21        22       23
+Student5     24       25     26       27        28       29
+
+#2. Save the dataset created as a .csv file and use it in step 3
+dummy_data.to_csv('Assingment1.csv')
+
+#3. The dataset created, needs to be uploaded and visualization on such data needs to be performed
+import matplotlib.pyplot as plt
+import seaborn as snr
+dummy_data=pd.read_csv("Assingment1.csv")
+
+#4. Since this is the first assessment, you can keep yourselves constrained to ‘Bar Chart’, ‘Pie Chart’, ‘Histograms’ etc
+#5. Make sure each of your visualization is followed with at least one line of self explanatory 
+#statement which tells about some basic statistical inference which has been made by you.
+
+#Bar Graph
+dummy_data.plot(kind='bar')
+# Below Bar Graph represents Students at x-axis and Marks on y-axis Of all 5 Students marks in 6 Subjects.
+# Blue line represents Maths.
+# Orange line represents English.
+# Green line represents Hindi.
+# Red line represents Physics.
+# Purple line represents Computer.
+# Brown line represents Science.
+O/P- 
+<matplotlib.axes._subplots.AxesSubplot at 0x7fbd05dc09d0>
+Graph will be drawn
+
+#Bar Graph
+dummy_data['Physics'].plot(kind='hist')
+# Below Bar Graph represents Students Marks at x-axis and frequency on y-axis Of all 5 Students marks in 6 Subjects.
+# Blue line represents Physics Subject marks of 5 students in class.
+O/P- <AxesSubplot:ylabel='Frequency'>
+Graph will be drawn
+
+#Pie Graph
+dummy_data = pd.DataFrame(np.arange(0,30).reshape(5,6),index=['0','1','2','3','4'],columns=['Maths','English','Hindi','Physics','Computer','Science'])
+dummy_data.iloc[0:3].plot.pie(subplots=True,figsize=(10,10),fontsize=20,autopct='%.2f')
+# Below Bar Graph represents marks obtained by 2nd Student in 6 Subjects.
+O/P-array([<matplotlib.axes._subplots.AxesSubplot object at 0x7fbd039d90a0>,
+       <matplotlib.axes._subplots.AxesSubplot object at 0x7fbd039a4ca0>,
+       <matplotlib.axes._subplots.AxesSubplot object at 0x7fbd039d0eb0>,
+       <matplotlib.axes._subplots.AxesSubplot object at 0x7fbd0398b040>,
+       <matplotlib.axes._subplots.AxesSubplot object at 0x7fbd03931d00>,
+       <matplotlib.axes._subplots.AxesSubplot object at 0x7fbd038e9280>],
+      dtype=object)
+  Graph will be drawn.
+
+********************************************************** Data Visualization Assingment2 *****************************************************************************
+****Solution_On_Data_Visualization_Assingment2****
+
+#1. Use the FITBIT Dataset shared for Data Visualization
+#2. You are free to make as many visualization as you wish, right from scatter plot to Box plot, 
+Violin plot, Swarm plot and whatever comes to your mind
+#3. Make sure each of your visualization is followed with at least one line of self explanatory 
+statement which tells about some basic statistical inference which has been made by you.
+
+import pandas as pd
+import numpy  as np
+import matplotlib.pyplot as plt
+import seaborn as snr
+
+FitBit_data=pd.read_csv("/content/FitBit data.csv")
+
+#line graph
+ax=FitBit_data.plot(figsize=(10,10),title='FitBit_data')
+ax.set_xlabel('x axis') #total number of rows in the iris dataset
+ax.set_ylabel('y axis') #highest magnitude of numerical variables 
+O/P- Graph will be drawn
+
+#Bar Graph
+FitBit_data.plot(kind="bar")
+O/P- Graph will be drawn
+
+#Histograph
+FitBit_data.plot(kind="hist",bins=200)
+O/P- Graph will be drawn
+
+#Scatter Plot
+FitBit_data.plot.scatter(x='TotalSteps',y='Calories',color='g')
+O/P- Graph will be drawn
+
+#Relational Plot
+snr.relplot(x='TotalDistance', y='Calories',data=FitBit_data)
+O/P- Graph will be drawn
+
+#Cat Plot
+snr.catplot(x='TotalSteps', y='Calories',data=FitBit_data)
+O/P- Graph will be drawn
+
+#Box Plot
+snr.boxplot(x='TotalSteps', y='Calories',data=FitBit_data)
+O/P - Graph will be drawn
+
+********************************************************** Data Visualization Assingment3 *****************************************************************************
+****Solution_On_Data_Visualization_Assingment3****
+
+1. Use the Titanic Dataset which is already available in Seaborn library for Data Visualization
+2. You are free to make as many visualization as you wish, right from scatter plot to Box plot, 
+Violin plot, Swarm plot and whatever comes to your mind
+3. Make sure each of your visualization is followed with at least one line of self explanatory 
+statement which tells about some basic statistical inference which has been made by you.
+Step 3 is optional and if you wish to share and get verified your output (with insights collected)
+you can mail me the same at assimilate.ai03@gmail.com
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as snr
+
+titanic=snr.load_dataset('titanic')
+
+#Line Graph
+ax=titanic.plot(figsize=(10,10),title='Titanic')
+ax.set_xlabel('x axis')
+ax.set_ylabel('y axis')
+#Here, In line Graph drawn below represents titanic data.
+# Blue line represents Survived Peoples.
+# Orange line represents pclass.
+# Green line represents age.
+# Red line represents sibsp.
+# Purple line represents parch.
+# Brown line represents fare.
+O/P - Graph willbe drawn.
+
+#Bar Graph
+titanic.plot(kind='bar')
+# Below Bar Graph represents titanic ship details.
+O/P - Graph will be drawn.
+
+#Histogram
+titanic.plot(kind="hist",bins=200)
+# Below HistoGram represents titanic ship details.
+
+#Scatter Plot
+titanic.plot.scatter(x='age',y='fare',color='g')
+# Below Scatter Plot Graph represents age vs fare titanic ship details.
+O/P - Graph will be drawn
+
+#Relational Plot
+snr.relplot(x='age',y='fare',data=titanic)
+O/P - Graph will be drawn.
+
+#Cat Plot
+snr.catplot(x='age',y='fare',data=titanic)
+O/P - Graph will be drawn
+
+#Box Plot
+snr.boxplot(x='age',y='fare',data=titanic)
+O/P - Graph will be drawn
+
+#Violin Plot
+snr.violinplot(x='age',y='fare',data=titanic)
+O/P - Graph will be drawn
+
+#Swarm Plot
+snr.swarmplot(x='age',y='fare',data=titanic)
+O/P - Graph will be drawn
